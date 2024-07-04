@@ -16,30 +16,16 @@
             <column name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="user_register_pkey"/>
             </column>
-            <column name="agreement" type="BOOLEAN">
-                <constraints nullable="false"/>
-            </column>
-            <column name="version" type="SMALLINT"/>
-            <column name="inn" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="kpp" type="VARCHAR(255)"/>
-            <column name="email" type="VARCHAR(255)"/>
-            <column name="mobile_phone" type="VARCHAR(255)"/>
-            <column name="moderation_status" type="VARCHAR(64)"/>
-            <column name="name" type="VARCHAR(255)"/>
-            <column name="ogrn" type="VARCHAR(255)"/>
-            <column name="ogrnip" type="VARCHAR(255)"/>
-            <column name="partner_id" type="UUID">
-                <constraints nullable="false"/>
-            </column>
+            <column name="name" type="VARCHAR(128)"/>
+            <column name="surname" type="VARCHAR(128)"/>
+            <column name="patronymic" type="VARCHAR(128)"/>
             <column name="partner_status" type="VARCHAR(255)"/>
+            <column name="moderation_status" type="VARCHAR(64)"/>
             <column name="user_type" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="password" type="VARCHAR(255)"/>
-            <column name="patron" type="VARCHAR(255)"/>
-            <column name="surname" type="VARCHAR(255)"/>
+            <column name="mobile_phone" type="VARCHAR(24)"/>
+            <column name="email" type="VARCHAR(24)"/>
         </createTable>
     </changeSet>
 
