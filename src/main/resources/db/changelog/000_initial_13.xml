@@ -1,0 +1,46 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!--  Создание таблицы user_register: -->
+    <changeSet author="KiraLis39" id="00000001">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user_register" schemaName="public"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="user_register">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_register_pkey"/>
+            </column>
+            <column name="agreement" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="SMALLINT"/>
+            <column name="inn" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="kpp" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="mobile_phone" type="VARCHAR(255)"/>
+            <column name="moderation_status" type="VARCHAR(64)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="ogrn" type="VARCHAR(255)"/>
+            <column name="ogrnip" type="VARCHAR(255)"/>
+            <column name="partner_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="partner_status" type="VARCHAR(255)"/>
+            <column name="user_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="patron" type="VARCHAR(255)"/>
+            <column name="surname" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

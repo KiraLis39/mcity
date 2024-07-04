@@ -1,0 +1,84 @@
+logging:
+  level:
+    root: INFO
+    liquibase: INFO
+    liquibase.database: WARN
+    liquibase.changelog: WARN
+    org.springframework.security: INFO
+    org.springframework.boot.actuate: ERROR
+    org.keycloak.adapters: INFO
+    org.keycloak.protocol.oidc.client.authentication.ClientCredentialsProviderUtils: INFO
+    org.keycloak.authorization.client.util.HttpMethod: INFO
+    org.jboss.resteasy.resteasy_jaxrs.i18n: INFO
+    org.jboss.resteasy.plugins.providers.jaxb.i18n: INFO
+    org.hibernate: WARN
+    jdk.event.security: INFO
+    io.lettuce.core: INFO
+    io.netty: INFO
+    sun.net.www.protocol.http.HttpURLConnection: INFO
+
+server:
+  port: 8080
+  servlet:
+    context-path: ${SERVER_SERVLET_CONTEXT_PATH:/mcity}
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+  application:
+    version: 0.0.1
+    name: mcity
+
+  main:
+    allow-circular-references: false
+    lazy-initialization: false
+    allow-bean-definition-overriding: false
+
+  profiles:
+    active: dev
+    default: dev
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:mcity_db}
+    username: ${DB_USERNAME:mcity}
+    password: ${DB_PASSWORD:mcity}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      poolName: Hikari
+      max-lifetime: 1800000
+      idle-timeout: 600000
+      connection-timeout: 45000
+      maximum-pool-size: 10
+      # auto-commit: false
+
+  liquibase:
+    change-log: classpath:db/changelog/changelog.xml
+    # drop-first: true
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    open-in-view: false
+
+app:
+  props:
+    mail:
+      api-key: ${MAIL_API_KEY:9ff57f7e-fd0f-4931-9f56-3c435a9b5ff5}
+      url: https://mail.service/email/send
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    disable-swagger-default-url: true
+    config-url: "${API_DOCS_MAIN_URI:${server.servlet.context-path:}}/v3/api-docs/swagger-config"
+    url: "${API_DOCS_MAIN_URI:${server.servlet.context-path:}}/v3/api-docs"

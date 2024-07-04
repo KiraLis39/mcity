@@ -1,0 +1,13 @@
+include:
+  - project: support-team/ci-cd-lib
+    ref: main
+    file: /gitlab-ci/maven-gitlab-ci.yaml
+
+variables:
+  RP_PROJECT_SUFFIX_IMAGES: business
+  RP_PROJECT_NAME: partners
+  RP_K8S_NAME: rp-business-partners
+  RP_SONAR_PROJECT_KEY: russpass_business_partners_AYdOM7szbHCQAphnUo_c
+  RP_SENTRY_DSN_PROD: https://cdaab359a15a4a3ca0a52fd7901bc216@sentry.russpass.dev/20
+  RP_SENTRY_DSN_DEV: https://35b2c8071f2f4bddb61d016df96d0a36@sentry.russpass.dev/21
+  RP_CUSTOM_IMAGES_BUILD: $NEXUS_URL_IMAGE/support-team/maven:3.9.1-liberica-17
